@@ -1,0 +1,12 @@
+D:\Personal\Experis\WebApi\DataBD\bin\Debug\DataBD.dll.config
+D:\Personal\Experis\WebApi\DataBD\bin\Debug\DataBD.dll
+D:\Personal\Experis\WebApi\DataBD\bin\Debug\DataBD.pdb
+D:\Personal\Experis\WebApi\DataBD\bin\Debug\EntityFramework.dll
+D:\Personal\Experis\WebApi\DataBD\bin\Debug\EntityFramework.SqlServer.dll
+D:\Personal\Experis\WebApi\DataBD\bin\Debug\EntityFramework.xml
+D:\Personal\Experis\WebApi\DataBD\bin\Debug\EntityFramework.SqlServer.xml
+D:\Personal\Experis\WebApi\DataBD\obj\Debug\DataBD.csprojAssemblyReference.cache
+D:\Personal\Experis\WebApi\DataBD\obj\Debug\DataBD.csproj.CoreCompileInputs.cache
+D:\Personal\Experis\WebApi\DataBD\obj\Debug\DataBD.csproj.CopyComplete
+D:\Personal\Experis\WebApi\DataBD\obj\Debug\DataBD.dll
+D:\Personal\Experis\WebApi\DataBD\obj\Debug\DataBD.pdb

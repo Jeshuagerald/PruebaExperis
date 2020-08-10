@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Perfiles de Talento";
+}
+<br />
+
+<div>
+    Microsoft .Net: @Html.RadioButton("Tech", "MicrosoftNet")
+    Java: @Html.RadioButton("Tech", "OracleJava")
+</div>
+<br />
+<div class="form-row">
+    <div id="TechGrid"></div>
+</div>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+    $('[name=Tech]').change(function () {
+        var radioTech = $(this).val();
+        $.ajax({
+            type: "GET",
+            url:'@Url.Action("GetTechnologies", "Technologies")',
+            data: { tech: radioTech },
+            success: function(data){
+                $("#TechGrid").html(data);
+            }
+        });
+    });
+</script>

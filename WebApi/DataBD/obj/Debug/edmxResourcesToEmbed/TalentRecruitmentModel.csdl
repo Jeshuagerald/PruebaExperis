@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TalentRecruitmentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Candidate">
+    <Key>
+      <PropertyRef Name="IdCandidate" />
+    </Key>
+    <Property Name="IdCandidate" Type="Int32" Nullable="false" />
+    <Property Name="NameCandidate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserNameCandidate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EmailCandidate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AddressCandidate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneCandidate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ScheduleInterviews" Relationship="Self.FK_ScheduleInterview_Candidate" FromRole="Candidate" ToRole="ScheduleInterview" />
+  </EntityType>
+  <EntityType Name="InterviewMode">
+    <Key>
+      <PropertyRef Name="IdInterviewMode" />
+    </Key>
+    <Property Name="IdInterviewMode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DescInterviewMode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ScheduleInterviews" Relationship="Self.FK_ScheduleInterview_InterviewMode" FromRole="InterviewMode" ToRole="ScheduleInterview" />
+  </EntityType>
+  <EntityType Name="MicrosoftNet">
+    <Key>
+      <PropertyRef Name="IdTec" />
+    </Key>
+    <Property Name="IdTec" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DescTec" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="OracleJava">
+    <Key>
+      <PropertyRef Name="IdTec" />
+    </Key>
+    <Property Name="IdTec" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DescTec" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ScheduleInterview">
+    <Key>
+      <PropertyRef Name="IdSchedule" />
+    </Key>
+    <Property Name="IdSchedule" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdCandidate" Type="Int32" />
+    <Property Name="DateSchedule" Type="DateTime" Precision="3" />
+    <Property Name="IdInterviewMode" Type="Int32" />
+    <NavigationProperty Name="Candidate" Relationship="Self.FK_ScheduleInterview_Candidate" FromRole="ScheduleInterview" ToRole="Candidate" />
+    <NavigationProperty Name="InterviewMode" Relationship="Self.FK_ScheduleInterview_InterviewMode" FromRole="ScheduleInterview" ToRole="InterviewMode" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_ScheduleInterview_Candidate">
+    <End Role="Candidate" Type="Self.Candidate" Multiplicity="0..1" />
+    <End Role="ScheduleInterview" Type="Self.ScheduleInterview" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Candidate">
+        <PropertyRef Name="IdCandidate" />
+      </Principal>
+      <Dependent Role="ScheduleInterview">
+        <PropertyRef Name="IdCandidate" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ScheduleInterview_InterviewMode">
+    <End Role="InterviewMode" Type="Self.InterviewMode" Multiplicity="0..1" />
+    <End Role="ScheduleInterview" Type="Self.ScheduleInterview" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InterviewMode">
+        <PropertyRef Name="IdInterviewMode" />
+      </Principal>
+      <Dependent Role="ScheduleInterview">
+        <PropertyRef Name="IdInterviewMode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TalentRecruitmentEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Candidates" EntityType="Self.Candidate" />
+    <EntitySet Name="InterviewModes" EntityType="Self.InterviewMode" />
+    <EntitySet Name="MicrosoftNets" EntityType="Self.MicrosoftNet" />
+    <EntitySet Name="OracleJavas" EntityType="Self.OracleJava" />
+    <EntitySet Name="ScheduleInterviews" EntityType="Self.ScheduleInterview" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK_ScheduleInterview_Candidate" Association="Self.FK_ScheduleInterview_Candidate">
+      <End Role="Candidate" EntitySet="Candidates" />
+      <End Role="ScheduleInterview" EntitySet="ScheduleInterviews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ScheduleInterview_InterviewMode" Association="Self.FK_ScheduleInterview_InterviewMode">
+      <End Role="InterviewMode" EntitySet="InterviewModes" />
+      <End Role="ScheduleInterview" EntitySet="ScheduleInterviews" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

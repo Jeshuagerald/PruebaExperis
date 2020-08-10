@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TalentRecruitmentModelStoreContainer" CdmEntityContainer="TalentRecruitmentEntities">
+    <EntitySetMapping Name="Candidates">
+      <EntityTypeMapping TypeName="TalentRecruitmentModel.Candidate">
+        <MappingFragment StoreEntitySet="Candidate">
+          <ScalarProperty Name="IdCandidate" ColumnName="IdCandidate" />
+          <ScalarProperty Name="NameCandidate" ColumnName="NameCandidate" />
+          <ScalarProperty Name="UserNameCandidate" ColumnName="UserNameCandidate" />
+          <ScalarProperty Name="EmailCandidate" ColumnName="EmailCandidate" />
+          <ScalarProperty Name="AddressCandidate" ColumnName="AddressCandidate" />
+          <ScalarProperty Name="PhoneCandidate" ColumnName="PhoneCandidate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InterviewModes">
+      <EntityTypeMapping TypeName="TalentRecruitmentModel.InterviewMode">
+        <MappingFragment StoreEntitySet="InterviewMode">
+          <ScalarProperty Name="IdInterviewMode" ColumnName="IdInterviewMode" />
+          <ScalarProperty Name="DescInterviewMode" ColumnName="DescInterviewMode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MicrosoftNets">
+      <EntityTypeMapping TypeName="TalentRecruitmentModel.MicrosoftNet">
+        <MappingFragment StoreEntitySet="MicrosoftNet">
+          <ScalarProperty Name="IdTec" ColumnName="IdTec" />
+          <ScalarProperty Name="DescTec" ColumnName="DescTec" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OracleJavas">
+      <EntityTypeMapping TypeName="TalentRecruitmentModel.OracleJava">
+        <MappingFragment StoreEntitySet="OracleJava">
+          <ScalarProperty Name="IdTec" ColumnName="IdTec" />
+          <ScalarProperty Name="DescTec" ColumnName="DescTec" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ScheduleInterviews">
+      <EntityTypeMapping TypeName="TalentRecruitmentModel.ScheduleInterview">
+        <MappingFragment StoreEntitySet="ScheduleInterview">
+          <ScalarProperty Name="IdSchedule" ColumnName="IdSchedule" />
+          <ScalarProperty Name="IdCandidate" ColumnName="IdCandidate" />
+          <ScalarProperty Name="DateSchedule" ColumnName="DateSchedule" />
+          <ScalarProperty Name="IdInterviewMode" ColumnName="IdInterviewMode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="TalentRecruitmentModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

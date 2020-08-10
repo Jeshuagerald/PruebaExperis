@@ -1,0 +1,64 @@
+﻿@model List<WebAppTalent.Models.Technologies>
+
+<div>
+    <p>
+        Tecnologías
+    </p>
+</div>
+
+<div class="container">
+    <br />
+    <div style="width:90%; margin:0 auto;">
+        <table id="techGrid" class="table table-striped table-bordered dt-responsive nowrap" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th width="10"><input type="checkbox" name="chkAllItem" class="chk" id="chkbox_All" /></th>
+                    <th>Id</th>
+                    <th>Tecnología</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="chkItem" class="chk" id="chkbox_@item.IdTec" />
+                        </td>
+                        <td>@item.IdTec</td>
+                        <td>@item.DescTec</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<div>
+    <button id="btnViewCandidates" type="button" onclick="">Ver candidatos</button>
+</div>
+<br />
+<div class="form-row">
+    <div id="CandidatesGrid"></div>
+</div>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+    $("#btnViewCandidates").click(function () {
+        var idCheck = "";
+        var cont = 1;
+        var valueCheck = "";
+        $('#techGrid tbody tr').each(function () {
+            var $self = $(this);
+            if ($self.find(':checkbox').is(':checked')) {
+                valueCheck = $self.find('td').eq(1).html();
+            }
+        });
+        $.ajax({
+            type: "GET",
+            url:'@Url.Action("GetCandidates", "Candidates")',
+            data: { num: valueCheck },
+            success: function(data){
+                $("#CandidatesGrid").html(data);
+            }
+        });
+    });
+</script>

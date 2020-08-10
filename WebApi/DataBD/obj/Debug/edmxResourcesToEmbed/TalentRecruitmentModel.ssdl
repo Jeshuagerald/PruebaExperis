@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TalentRecruitmentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Candidate">
+    <Key>
+      <PropertyRef Name="IdCandidate" />
+    </Key>
+    <Property Name="IdCandidate" Type="int" Nullable="false" />
+    <Property Name="NameCandidate" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserNameCandidate" Type="nvarchar" MaxLength="50" />
+    <Property Name="EmailCandidate" Type="nvarchar" MaxLength="50" />
+    <Property Name="AddressCandidate" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhoneCandidate" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="InterviewMode">
+    <Key>
+      <PropertyRef Name="IdInterviewMode" />
+    </Key>
+    <Property Name="IdInterviewMode" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DescInterviewMode" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="MicrosoftNet">
+    <Key>
+      <PropertyRef Name="IdTec" />
+    </Key>
+    <Property Name="IdTec" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DescTec" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="OracleJava">
+    <Key>
+      <PropertyRef Name="IdTec" />
+    </Key>
+    <Property Name="IdTec" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DescTec" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ScheduleInterview">
+    <Key>
+      <PropertyRef Name="IdSchedule" />
+    </Key>
+    <Property Name="IdSchedule" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdCandidate" Type="int" />
+    <Property Name="DateSchedule" Type="datetime" />
+    <Property Name="IdInterviewMode" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_ScheduleInterview_Candidate">
+    <End Role="Candidate" Type="Self.Candidate" Multiplicity="0..1" />
+    <End Role="ScheduleInterview" Type="Self.ScheduleInterview" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Candidate">
+        <PropertyRef Name="IdCandidate" />
+      </Principal>
+      <Dependent Role="ScheduleInterview">
+        <PropertyRef Name="IdCandidate" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ScheduleInterview_InterviewMode">
+    <End Role="InterviewMode" Type="Self.InterviewMode" Multiplicity="0..1" />
+    <End Role="ScheduleInterview" Type="Self.ScheduleInterview" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="InterviewMode">
+        <PropertyRef Name="IdInterviewMode" />
+      </Principal>
+      <Dependent Role="ScheduleInterview">
+        <PropertyRef Name="IdInterviewMode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TalentRecruitmentModelStoreContainer">
+    <EntitySet Name="Candidate" EntityType="Self.Candidate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="InterviewMode" EntityType="Self.InterviewMode" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MicrosoftNet" EntityType="Self.MicrosoftNet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OracleJava" EntityType="Self.OracleJava" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ScheduleInterview" EntityType="Self.ScheduleInterview" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_ScheduleInterview_Candidate" Association="Self.FK_ScheduleInterview_Candidate">
+      <End Role="Candidate" EntitySet="Candidate" />
+      <End Role="ScheduleInterview" EntitySet="ScheduleInterview" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ScheduleInterview_InterviewMode" Association="Self.FK_ScheduleInterview_InterviewMode">
+      <End Role="InterviewMode" EntitySet="InterviewMode" />
+      <End Role="ScheduleInterview" EntitySet="ScheduleInterview" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
